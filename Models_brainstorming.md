@@ -9,8 +9,7 @@ Feb.25
 - Title
 - Description
 - Goal ($)
-- Start_Date
-- Finish_date
+- Funding period
 - Category
 
 
