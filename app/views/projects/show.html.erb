@@ -1,0 +1,6 @@
+<%= @project.id %></br>
+<%= @project.title %>
+
+<h2> Breakpoint </h2>
+<%= link_to "Add Breakpoint", new_project_breakpoint_path(@project.id) %>
+<%= @project.breakpoints.all %>
