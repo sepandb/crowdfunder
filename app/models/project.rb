@@ -1,6 +1,10 @@
 class Project < ActiveRecord::Base
 
 	has_many :pledges
-	has_many :users, through: :pledges
+	belongs_to :user
+
+	def owner
+		user
+	end
 
 end
