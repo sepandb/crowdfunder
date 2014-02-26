@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20140226033721) do
+=======
+ActiveRecord::Schema.define(version: 20140226185802) do
+
+  create_table "breakpoints", force: true do |t|
+    t.integer  "amount"
+    t.integer  "project_id"
+    t.string   "reward"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+>>>>>>> master
 
   create_table "pledges", force: true do |t|
     t.integer  "amount"
@@ -30,6 +42,10 @@ ActiveRecord::Schema.define(version: 20140226033721) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+<<<<<<< HEAD
+=======
+    t.datetime "start_date"
+>>>>>>> master
   end
 
   create_table "users", force: true do |t|
