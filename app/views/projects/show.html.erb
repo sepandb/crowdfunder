@@ -17,7 +17,9 @@
 
 
 
+<% if current_user.id == @project.user_id   %>
 <h3> Breakpoints </h3>
 
 <%= link_to "Add Breakpoint", new_project_breakpoint_path(@project.id) %>
+<% end %>
 
