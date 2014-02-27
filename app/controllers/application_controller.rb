@@ -8,5 +8,4 @@ def not_authenticated
 	redirect_to sessions_path, :alert => "You need to login"
 end
 
-  helper_method :current_user
 end
