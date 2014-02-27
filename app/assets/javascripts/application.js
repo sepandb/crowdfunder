@@ -14,3 +14,19 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+// var buttonDefaults = function(selector, save_label, complete_label) {
+//      $(selector)
+//         .on('ajax:beforeSend', function() { // set this code to happen just before the ajax request is made
+//           $("input[type='submit']") // make changes to the submit button
+//             .val(save_label) // change the text on the button
+//             .attr('disabled', 'disabled'); // disable the button
+//         })
+//         .on('ajax:complete', function() {
+//           $("input[type='submit']")
+//             .val(complete_label)
+//             .removeAttr('disabled');
+//         });
+//     });
+
+

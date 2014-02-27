@@ -4,6 +4,7 @@ Crowdfunder::Application.routes.draw do
     resources :breakpoints, :only => [:new]
   end
   resources :breakpoints, :except => [:new]
+  post '/pledges/:id' => 'pledges#create', as: 'pledge_amount'
   root to: 'projects#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

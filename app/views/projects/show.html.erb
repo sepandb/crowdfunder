@@ -1,6 +1,23 @@
-<%= @project.id %></br>
-<%= @project.title %>
+<h1><%= @project.title %></h1>
+<h2>Amount Pledged: <span id="pleged_total"><%= @project.total %><span></h2>
+<table>
+<tr>
+	<th>Reward</th>
+	<th>Amount</th>
+</tr>
+<% @project.breakpoints.all.each do |breakpoint| %>
+	<tr>
+		<td><%= breakpoint.reward %></td>
+		<td><%= breakpoint.amount %></td>
+		<td><%= button_to "Pledge", pledge_amount_path(breakpoint.id), :remote => true  %>
 
-<h2> Breakpoint </h2>
+	</tr>
+<% end  %>
+</table>
+
+
+
+<h3> Breakpoints </h3>
+
 <%= link_to "Add Breakpoint", new_project_breakpoint_path(@project.id) %>
-<%= @project.breakpoints.all %>
+
