@@ -1,9 +1,13 @@
 class User < ActiveRecord::Base
-	has_secure_password
+  authenticates_with_sorcery!
 
-	has_many :pledges
-	has_many :projects
-	has_many :pledged_projects, through: :pledges, :source => :project
+  validates :email, :presence => true
+  validates :password, :presence => true
+  # validates :password_confirmation, :presence => true
 
+
+  has_many :projects
+  has_many :pledges
+  has_many :pledged_projects, through: :pledges, source: :project
 
 end
