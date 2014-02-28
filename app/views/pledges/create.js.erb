@@ -1,1 +1,3 @@
 $('#pleged_total').html('<%= @breakpoint.project.total %>');
+
+$('#my_pledged_total').html('<%= amount_pledged_to_this_project(current_user, @breakpoint.project) %>');
