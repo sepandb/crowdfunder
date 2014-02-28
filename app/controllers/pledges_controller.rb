@@ -5,6 +5,7 @@ class PledgesController < ApplicationController
 		@breakpoint = Breakpoint.find(params[:id])
 		@pledge.amount = @breakpoint.amount
 		@pledge.project_id = @breakpoint.project_id
+		@pledge.user_id = current_user.id
 		@pledge.save
 
 		respond_to do |format|

@@ -1,5 +1,14 @@
 <h1><%= @project.title %></h1>
-<h2>Amount Pledged: <span id="pleged_total"><%= @project.total %><span></h2>
+
+<% if Time.now < @project.start_date  %>
+	<h3>Project Starts <%= @project.start_date %></h3>
+<% elsif Time.now < @project.end_date %>
+	<h3>Days Left:</h3> <div id="countdown" style="width:40%"> <%= distance_of_time_in_words(Time.now, @project.end_date)  %> </div>
+<% else %>
+	<h3> The Project period has passed! </h3>
+<% end  %>
+<h2>Total Pledged to This Project: <span id="pleged_total"><%= @project.total %><span></h2>
+<h3 style="color:green"> You've pledged <span id ="my_pledged_total">$<%= amount_pledged_to_this_project(current_user, @project) %> </span></h3>
 <table>
 <tr>
 	<th>Reward</th>
@@ -8,8 +17,8 @@
 <% @project.breakpoints.all.each do |breakpoint| %>
 	<tr>
 		<td><%= breakpoint.reward %></td>
-		<td><%= breakpoint.amount %></td>
-		<td><%= button_to "Pledge", pledge_amount_path(breakpoint.id), :remote => true  %>
+		<td>$<%= breakpoint.amount %></td>
+		<td><%= button_to "Pledge", pledge_amount_path(breakpoint.id), :class => 'pledge-breakpoint-form'  %>
 
 	</tr>
 <% end  %>
@@ -22,4 +31,25 @@
 
 <%= link_to "Add Breakpoint", new_project_breakpoint_path(@project.id) %>
 <% end %>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#countdown').countdown({
+		"until" : new Date(<%= date_for_jquery_countdown(@project.end_date) %>)
+	});
+
+	$('.pledge-breakpoint-form').click(function() {
+		var form = $(this).closest('form');
+		$.ajax({
+			"url" : form.attr('action'),
+			"type" : "post",
+			"data" : form.serialize()
+			}
+		);
+		return false;
+	})
+})
+</script>
+
+
 
