@@ -1,4 +1,12 @@
 <h1><%= @project.title %></h1>
+
+<% if Time.now < @project.start_date  %>
+	<h3>Project Starts <%= @project.start_date %></h3>
+<% elsif Time.now < @project.end_date %>
+	<h3>Days Left:</h3> <div id="countdown" style="width:40%"> <%= distance_of_time_in_words(Time.now, @project.end_date)  %> </div>
+<% else %>
+	<h3> The Project period has passed! </h3>
+<% end  %>
 <h2>Amount Pledged: <span id="pleged_total"><%= @project.total %><span></h2>
 <table>
 <tr>
@@ -22,4 +30,13 @@
 
 <%= link_to "Add Breakpoint", new_project_breakpoint_path(@project.id) %>
 <% end %>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#countdown').countdown({
+		"until" : new Date(<%= date_for_jquery_countdown(@project.end_date) %>)
+	$()
+	});
+})
+</script>
 

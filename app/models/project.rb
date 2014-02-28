@@ -17,4 +17,8 @@ class Project < ActiveRecord::Base
 		total
 	end
 
+	def end_date
+		self.start_date + self.funding_period.days
+	end
+
 end
