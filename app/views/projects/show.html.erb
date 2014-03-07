@@ -43,7 +43,10 @@ $(document).ready(function(){
 		$.ajax({
 			"url" : form.attr('action'),
 			"type" : "post",
-			"data" : form.serialize()
+			"data" : form.serialize(),
+			"success" : function(data) {
+
+			}
 			}
 		);
 		return false;
